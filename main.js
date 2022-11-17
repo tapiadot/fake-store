@@ -10,14 +10,16 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-fetch(URL)
-  .then((res) => res.json())
-  .then((data) => {
-    const products = [...data];
-    const ranIndexProd = getRandomInt(0, products.length);
-    const ranProd = products[ranIndexProd];
-    const images = ranProd.images;
-    const ranIndexImg = getRandomInt(0, images.length);
-    const ranImg = images[ranIndexImg];
-    imgRandomProduct.src = ranImg;
-  });
+async function displayRandomProduct() {
+  const res = await fetch(URL);
+  const data = await res.json();
+  const products = [...data];
+  const ranIndexProd = getRandomInt(0, products.length);
+  const ranProd = products[ranIndexProd];
+  const images = ranProd.images;
+  const ranIndexImg = getRandomInt(0, images.length);
+  const ranImg = images[ranIndexImg];
+  imgRandomProduct.src = ranImg;
+}
+
+displayRandomProduct();
