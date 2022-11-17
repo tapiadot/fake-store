@@ -1,6 +1,7 @@
 "use strict";
 
 const imgRandomProduct = document.querySelector("img");
+const btnNewRanProd = document.querySelector("button");
 
 const URL = "https://api.escuelajs.co/api/v1/products";
 
@@ -21,5 +22,7 @@ async function displayRandomProduct() {
   const ranImg = images[ranIndexImg];
   imgRandomProduct.src = ranImg;
 }
+
+btnNewRanProd.addEventListener("click", displayRandomProduct);
 
 displayRandomProduct();
